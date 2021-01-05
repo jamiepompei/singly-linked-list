@@ -71,5 +71,12 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         shiftIndex(toConnect.getNext(), toConnect.getIndex());
     }
 
+    public Node<SomeType> findNodeToReconnect(Node<SomeType> tempNode, int index){
+        while (tempNode.getIndex() != index -1){
+            tempNode = tempNode.getNext();
+        }
+        return tempNode;
+    }
+
 
 }
