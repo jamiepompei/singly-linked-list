@@ -103,5 +103,9 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         length--;
     }
 
+    private void removeLastElement(){ head = null;}
 
+    public int size(){
+        return length;
+    }
 }
