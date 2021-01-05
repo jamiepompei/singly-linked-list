@@ -78,5 +78,30 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         return tempNode;
     }
 
+    public void removeOtherIndex(int index){
+        Node<SomeType> tempNode = head.getNext();
+        tempNode = findNodeToReconnect(tempNode, index);
+        int tempIndex = tempNode.getIndex();
+        Node<SomeType> toReplace = tempNode.getNext();
+        if(toReplace.getNext() == null){
+            tempNode.setNext(null);
+        }
+        else{
+            removeInTheMiddle(tempNode, toReplace, tempIndex);
+        }
+    }
+
+    public void remove(int index){
+        if(index == 0 && this.size() == 1)
+            removeLastElement();
+        else if(index ==0)
+            removeFirstIndex();
+        else if(index == 1)
+            removeSecondIndex();
+        else
+            removeOtherIndex(index);
+        length--;
+    }
+
 
 }
