@@ -4,7 +4,8 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
     private Node<SomeType> tail;
     private int length;
 
-    public SinglyLinkedList(Node<SomeType> head, Node<SomeType> tail, int length) {
+    //default constructor
+    public SinglyLinkedList() {
         head = null;
         tail = null;
         length = 0;
