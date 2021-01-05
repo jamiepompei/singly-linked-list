@@ -1,7 +1,6 @@
 # Singly Linked List Java Implementation
-<br>
-<br>
 A Java based implementation of a generic singly-linked-list with a node class to represent each element of any type. <br>
+<br>
 <strong>Method Definitions:<strong><br>
   <ul>
     <li><strong>Add:</strong> add an element to the list</li>
