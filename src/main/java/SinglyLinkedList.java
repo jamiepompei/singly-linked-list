@@ -63,5 +63,13 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         shiftIndex(head.getNext(), 1);
     }
 
+    public void removeInTheMiddle(Node<SomeType> tempNode, Node<SomeType> toReplace, int index){
+        Node<SomeType> toConnect = toReplace.getNext();
+        tempNode.setNext(toConnect);
+        toReplace.setNext(null);
+        toConnect.setIndex(index + 1);
+        shiftIndex(toConnect.getNext(), toConnect.getIndex());
+    }
+
 
 }
