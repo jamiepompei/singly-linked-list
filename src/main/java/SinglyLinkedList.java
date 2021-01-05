@@ -27,4 +27,16 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         tail = tail.getNext();
         tail.setIndex(nextIndex);
     }
+
+    public void add(SomeType obj){
+        if(head == null)
+            addFirstElement(obj);
+        else if (tail == null)
+            addSecondElement(obj);
+        else
+            addThirdElementOnwards(obj);
+        length++;
+    }
+
+
 }
