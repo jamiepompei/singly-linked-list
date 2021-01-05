@@ -53,4 +53,15 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
         head.setIndex(0);
         shiftIndex(tail.getNext(), 0);
     }
+
+    public void removeSecondIndex(){
+        Node<SomeType> tempNode = head.getNext();
+        Node<SomeType> nextNode = tempNode.getNext();
+        head.setNext(nextNode);
+        nextNode.setIndex(1);
+        tempNode.setNext(null);
+        shiftIndex(head.getNext(), 1);
+    }
+
+
 }
