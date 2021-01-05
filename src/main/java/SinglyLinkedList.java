@@ -108,4 +108,119 @@ public class SinglyLinkedList <SomeType extends Comparable<SomeType>> {
     public int size(){
         return length;
     }
+
+    public boolean contains(SomeType obj){
+        Node<SomeType> tempNode = head;
+        if(head == null)
+            return false;
+        else
+            for(int i = 0; i < this.size(); i++){
+                if(tempNode.getObj().equals(obj))
+                    return true;
+                else
+                    tempNode = tempNode.getNext();
+            }
+        return false;
+    }
+
+    public SomeType get(int index){
+        int tempIndex = head.getIndex();
+        Node<SomeType> tempNode = head;
+        while(tempIndex != index){
+            tempIndex++;
+            tempNode = tempNode.getNext();
+        }
+        return tempNode.getObj();
+    }
+
+    public void set(int index, SomeType obj){
+        int tempIndex = head.getIndex();
+        Node<SomeType> tempNode = head;
+        while(tempIndex != index){
+            tempIndex++;
+            tempNode = tempNode.getNext();
+        }
+        tempNode.setObj(obj);
+    }
+
+    public int find(SomeType obj){
+        Node<SomeType> tempNode = head;
+        int nodeCount = 0;
+        if(head == null)
+            return -1;
+        while(tempNode != null){
+            if(tempNode.getObj() == obj)
+                return nodeCount;
+            nodeCount++;
+            tempNode = tempNode.getNext();
+        }
+        return -1;
+    }
+
+    public SinglyLinkedList<SomeType> copyBySize(){
+        SinglyLinkedList<SomeType> copy = new SinglyLinkedList<SomeType>();
+        Node<SomeType> tempNode = head;
+        while(tempNode != null){
+            copy.add(tempNode.getObj());
+            tempNode = tempNode.getNext();
+        }
+        return copy;
+    }
+
+    public SinglyLinkedList<SomeType> copy(){
+        int sizeOfCopy = this.size();
+        if(sizeOfCopy == 0)
+            return new SinglyLinkedList<SomeType>();
+        else
+            return copyBySize();
+    }
+
+    public SinglyLinkedList<SomeType> slice(int startIndexInclusive, int endIndexInclusive){
+        SinglyLinkedList<SomeType> copy = this.copy();
+        for (int i = 0; i < copy.size(); i++) {
+            if(i < startIndexInclusive || i >= endIndexInclusive)
+                copy.remove(i);
+        }
+        return copy;
+    }
+
+    public void reverse(){
+        int size =  this.size();
+        for (int i = 0; i < size; i++) {
+            this.add(this.get(size -1 - i));
+        }
+        for (int i = 0; i < size; i++) {
+            this.remove(0);
+        }
+    }
+
+    public void swap(SomeType obj1, SomeType obj2){
+        Node<SomeType> tempNode = head;
+        int indexObj1 = -1;
+        int indexObj2 = 1;
+        while(tempNode != null){
+            if(tempNode.getObj() == obj1)
+                indexObj1 = tempNode.getIndex();
+            else if (tempNode.getObj() == obj2)
+                indexObj2 = tempNode.getIndex();
+            tempNode = tempNode.getNext();
+        }
+        this.set(indexObj2, obj1);
+        this.set(indexObj1, obj2);
+    }
+
+    public void bubbleSort(){
+        for (int i = 0; i < length - 1; i++) {
+            SomeType currentIndexI = get(i);
+            for (int j = i + 1; j < length ; j++) {
+                SomeType currentIndexJ = get(j);
+                if(currentIndexI.compareTo(currentIndexJ) > 0){
+                    swap(currentIndexI, currentIndexJ);
+                    currentIndexI = currentIndexJ;
+                }
+            }
+        }
+    }
+
+
 }
